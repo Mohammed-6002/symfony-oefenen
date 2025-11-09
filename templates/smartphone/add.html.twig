@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block title %}Smartphone toevoegen{% endblock %}
+{% block body %}
+<div class='container py-4'>
+<h1 class='text-success mb-4'>Smartphone toevoegen</h1>
+<div class='card p-4 shadow-sm'>
+{{ form_start(form) }}
+{{ form_widget(form) }}
+<div class='mt-3 d-flex justify-content-between'>
+<button class='btn btn-success'>Opslaan</button>
+<a href="{{ path('app_smartphone') }}" class='btn btn-outline-secondary'>Terug</a>
+</div>
+{{ form_end(form) }}
+</div>
+</div>
+{% endblock %}
