@@ -1,15 +1,29 @@
 {% extends 'base.html.twig' %}
+
 {% block title %}Smartphone details{% endblock %}
+
 {% block body %}
-<div class='container py-4'>
-<h1 class='text-primary mb-4'>Smartphone details</h1>
-<div class='card shadow-sm' style='max-width:500px;'>
-<div class='card-body'>
-<h4 class='card-title'>{{ smartphone.name }}</h4>
-<p class='card-text'><strong>Vendor:</strong> {{ smartphone.vendor }}<br><strong>Kleur:</strong> {{ smartphone.color ?: '-' }}<br><strong>Prijs:</strong> {% if smartphone.price %}€ {{ smartphone.price }}{% else %}-{% endif %}</p>
-<a href="{{ path('app_smartphone') }}" class='btn btn-outline-secondary'>Terug</a>
-<a href="{{ path('app_update_smartphone',{id:smartphone.id}) }}" class='btn btn-warning text-white'>Bewerken</a>
-</div>
-</div>
-</div>
+  <div class="container py-4">
+    <h1 class="text-primary mb-4">Smartphone details</h1>
+
+    <div class="card shadow-sm" style="max-width: 500px;">
+      <div class="card-body">
+        <h4 class="card-title">{{ smartphone.name }}</h4>
+
+        <p class="card-text">
+          <strong>Vendor:</strong> {{ smartphone.vendor }}<br>
+          <strong>Kleur:</strong> {{ smartphone.color ?: '-' }}<br>
+          <strong>Prijs:</strong>
+          {% if smartphone.price %}
+            € {{ smartphone.price }}
+          {% else %}
+            -
+          {% endif %}
+        </p>
+
+        <a href="{{ path('app_smartphone') }}" class="btn btn-outline-secondary">Terug</a>
+        <a href="{{ path('app_update_smartphone', { id: smartphone.id }) }}" class="btn btn-warning text-white">Bewerken</a>
+      </div>
+    </div>
+  </div>
 {% endblock %}
