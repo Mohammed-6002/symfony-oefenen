@@ -6,53 +6,30 @@
   <div class="container py-4">
     <h1 class="text-primary mb-4">Smartphone overzicht</h1>
 
-    <a href="{{ path('app_add_smartphone') }}" class="btn btn-success mb-3">
-      Nieuwe smartphone toevoegen
-    </a>
-
-    {% for label, messages in app.flashes %}
-      {% for message in messages %}
-        <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
-          {{ message }}
-          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        </div>
-      {% endfor %}
-    {% endfor %}
-
     <table class="table table-hover table-bordered align-middle">
       <thead class="table-dark">
         <tr>
-          <th>Nr</th>
-          <th>Naam</th>
-          <th>Vendor</th>
-          <th>Kleur</th>
-          <th>Prijs</th>
-          <th>Acties</th>
+          <th scope="col">#</th>
+          <th scope="col">Vendor</th>
+          <th scope="col">Type</th>
+          <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody>
         {% for smartphone in smartphones %}
           <tr>
-            <td>{{ loop.index }}</td>
-            <td>{{ smartphone.name }}</td>
-            <td>{{ smartphone.vendor }}</td>
-            <td>{{ smartphone.color ?: '-' }}</td>
+            <th scope="row">{{ smartphone.id }}</th>
+            <td>{{ smartphone.vendor.name }}</td>
+            <td>{{ smartphone.type }}</td>
             <td>
-              {% if smartphone.price %}
-                € {{ smartphone.price }}
-              {% else %}
-                -
-              {% endif %}
-            </td>
-            <td>
-              <a href="{{ path('app_view_smartphone', { id: smartphone.id }) }}" class="btn btn-sm btn-secondary">View</a>
-              <a href="{{ path('app_update_smartphone', { id: smartphone.id }) }}" class="btn btn-sm btn-warning text-white">Edit</a>
-              <a href="{{ path('app_delete_smartphone', { id: smartphone.id }) }}" class="btn btn-sm btn-danger">Delete</a>
+              <a href="{{ path('app_view_smartphone', { 'id': smartphone.id }) }}" class="btn btn-primary btn-sm">View</a>
+              <a href="{{ path('app_update_smartphone', { 'id': smartphone.id }) }}" class="btn btn-warning btn-sm text-white">Update</a>
+              <a href="{{ path('app_delete_smartphone', { 'id': smartphone.id }) }}" class="btn btn-danger btn-sm">Delete</a>
             </td>
           </tr>
         {% else %}
           <tr>
-            <td colspan="6" class="text-center text-muted">Geen smartphones gevonden</td>
+            <td colspan="4" class="text-center text-muted">Geen smartphones gevonden</td>
           </tr>
         {% endfor %}
       </tbody>
